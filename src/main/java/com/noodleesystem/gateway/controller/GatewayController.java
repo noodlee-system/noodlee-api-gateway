@@ -1,9 +1,9 @@
-package com.noodleesystem.template.controller;
+package com.noodleesystem.gateway.controller;
 
 import java.text.MessageFormat;
 import java.util.List;
 
-import com.noodleesystem.template.exception.EmptyQueueException;
+import com.noodleesystem.gateway.exception.EmptyQueueException;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,15 +11,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import com.noodleesystem.template.model.User;
-import com.noodleesystem.template.repository.UserRepository;
+import com.noodleesystem.gateway.model.User;
+import com.noodleesystem.gateway.repository.UserRepository;
 import org.springframework.web.client.HttpClientErrorException;
 import serilogj.Log;
 
 @RestController
 @RequestMapping("/api")
-public class TemplateController {
-    final static String queueName = "template_queue";
+public class GatewayController {
+    final static String queueName = "gateway_queue";
 
     @Autowired
 	private UserRepository usersRepository;

@@ -1,4 +1,4 @@
-package com.noodleesystem.template;
+package com.noodleesystem.gateway;
 
 // import org.junit.Test;
 // import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ package com.noodleesystem.template;
 
 // @RunWith(SpringRunner.class)
 // @SpringBootTest
-// public class TemplateServiceTests {
+// public class ApiGatewayTests {
 
 // 	@Test
 // 	public void contextLoads() {

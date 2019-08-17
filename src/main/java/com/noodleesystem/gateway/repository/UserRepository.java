@@ -1,9 +1,9 @@
-package com.noodleesystem.template.repository;
+package com.noodleesystem.gateway.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.noodleesystem.template.model.User;
+import com.noodleesystem.gateway.model.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long>{ }

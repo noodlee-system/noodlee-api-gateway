@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.noodleesystem</groupId>
-	<artifactId>template</artifactId>
+	<artifactId>gateway</artifactId>
 	<version>1.0</version>
-	<name>Template Microservice</name>
-	<description>Noodlee System Template Microservice</description>
+	<name>API Gateway Microservice</name>
+	<description>Noodlee System API Gateway Microservice</description>
 	<properties>
 		<java.version>8</java.version>
 		<spring-cloud.version>Finchley.SR2</spring-cloud.version>
