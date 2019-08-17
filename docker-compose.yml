@@ -24,7 +24,7 @@ services:
       POSTGRES_PASSWORD: PdgDNLnlrr3NgshqwKJA
       POSTGRES_DB: registration
     volumes:
-      - gateway-service_database-volume:/var/lib/postgresql/data2
+      - gateway-service_database-volume:/var/lib/postgresql/gateway
     networks:
       - noodlee-system-network
 
