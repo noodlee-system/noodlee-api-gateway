@@ -1,0 +1,60 @@
+package com.noodleesystem.gateway.controller;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.noodleesystem.gateway.exception.UserExistsException;
+import com.noodleesystem.gateway.model.UserApiModel;
+import com.noodleesystem.gateway.model.UserRegistrationCommand;
+import com.noodleesystem.gateway.repository.UserRepository;
+import org.springframework.amqp.AmqpException;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+import serilogj.Log;
+
+@RestController
+public class RegistrationController {
+    final static String userRegistrationQueue = "user_registration_queue";
+
+    @Autowired
+    RabbitTemplate rabbitTemplate;
+
+    @Autowired
+    private UserRepository usersRepository;
+
+    private ObjectMapper objectMapper;
+
+    public RegistrationController() {
+        this.objectMapper = new ObjectMapper();
+    }
+
+    @PostMapping("/register")
+    public UserRegistrationCommand registerUser(@RequestBody UserRegistrationCommand user) throws Exception {
+        UserApiModel userObject = usersRepository.findByUsername(user.getUsername());
+
+        if (userObject != null) {
+            throw new UserExistsException(user.getUsername());
+        }
+
+        try {
+            final String userJsonString = objectMapper.writeValueAsString(user);
+
+            rabbitTemplate.convertAndSend(userRegistrationQueue, userJsonString);
+        } catch (JsonProcessingException ex) {
+            throw new Exception("Problem with processing your request!");
+        } catch (AmqpException ex) {
+            throw new Exception("Problem with processing your request!");
+        }
+
+        final UserApiModel newUserCredentials = new UserApiModel(user.getUsername(), user.getPassword());
+        newUserCredentials.setRole("student");
+
+        usersRepository.save(newUserCredentials);
+
+        Log.information("{username} user was successfully registered!", user.getUsername());
+
+        return user;
+    }
+}

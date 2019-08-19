@@ -6,11 +6,11 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class RabbitConfig {
-    static final String queueName = "gateway_queue";
+    static final String userRegistrationQueue = "user_registration_queue";
 
     @Bean
-    public Queue testQueue() {
-        return new Queue(queueName);
+    public Queue getUserRegistrationQueue() {
+        return new Queue(userRegistrationQueue);
     }
 }
 
