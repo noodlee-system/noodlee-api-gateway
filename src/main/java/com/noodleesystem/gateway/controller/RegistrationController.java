@@ -3,7 +3,7 @@ package com.noodleesystem.gateway.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.noodleesystem.gateway.exception.UserExistsException;
-import com.noodleesystem.gateway.model.UserApiModel;
+import com.noodleesystem.gateway.model.UserRegistrationModel;
 import com.noodleesystem.gateway.model.UserRegistrationCommand;
 import com.noodleesystem.gateway.repository.UserRepository;
 import org.springframework.amqp.AmqpException;
@@ -32,7 +32,7 @@ public class RegistrationController {
 
     @PostMapping("/register")
     public UserRegistrationCommand registerUser(@RequestBody UserRegistrationCommand user) throws Exception {
-        UserApiModel userObject = usersRepository.findByUsername(user.getUsername());
+        UserRegistrationModel userObject = usersRepository.findByUsername(user.getUsername());
 
         if (userObject != null) {
             throw new UserExistsException(user.getUsername());
@@ -48,7 +48,7 @@ public class RegistrationController {
             throw new Exception("Problem with processing your request!");
         }
 
-        final UserApiModel newUserCredentials = new UserApiModel(user.getUsername(), user.getPassword());
+        final UserRegistrationModel newUserCredentials = new UserRegistrationModel(user.getUsername(), user.getPassword());
         newUserCredentials.setRole("student");
 
         usersRepository.save(newUserCredentials);

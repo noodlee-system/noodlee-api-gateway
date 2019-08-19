@@ -4,13 +4,13 @@ import java.util.Date;
 
 import com.noodleesystem.gateway.exception.UnauthorizedAccessException;
 import com.noodleesystem.gateway.model.Token;
-import com.noodleesystem.gateway.model.UserCredentialsModel;
+import com.noodleesystem.gateway.model.UserAuthenticationCommand;
 import com.noodleesystem.gateway.repository.UserRepository;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import com.noodleesystem.gateway.model.UserApiModel;
+import com.noodleesystem.gateway.model.UserRegistrationModel;
 
 @RestController
 public class AuthenticationController {
@@ -19,12 +19,12 @@ public class AuthenticationController {
 
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/auth")
-    public Token authenticate(@RequestBody UserCredentialsModel user) {
+    public Token authenticate(@RequestBody UserAuthenticationCommand user) {
         final long currentTimeMillis = System.currentTimeMillis();
         final long tokenExpirationTimeMs = 3600 * 1000;
         final String signatureKey = "c9e0fffa-6333-47d9-b621-ba44dc9523a7";
 
-        UserApiModel userObject = usersRepository.findByUsername(user.getUsername());
+        UserRegistrationModel userObject = usersRepository.findByUsername(user.getUsername());
 
         if (userObject != null && user.getPassword().equals(userObject.getPassword())) {
             final String token = Jwts.builder()

@@ -6,11 +6,11 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Repository;
 
-import com.noodleesystem.gateway.model.UserApiModel;
+import com.noodleesystem.gateway.model.UserRegistrationModel;
 
 @Repository
-public interface UserRepository extends JpaRepository<UserApiModel, Long>{
+public interface UserRepository extends JpaRepository<UserRegistrationModel, Long>{
     @Async
     @Query("SELECT u FROM UserApiModel u WHERE u.username = :username")
-    UserApiModel findByUsername(@Param("username") final String username);
+    UserRegistrationModel findByUsername(@Param("username") final String username);
 }

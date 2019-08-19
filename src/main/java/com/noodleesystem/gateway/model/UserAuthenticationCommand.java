@@ -1,12 +1,12 @@
 package com.noodleesystem.gateway.model;
 
-public class UserCredentialsModel {
+public class UserAuthenticationCommand {
     private String username;
     private String password;
 
-    public UserCredentialsModel() { }
+    public UserAuthenticationCommand() { }
 
-    public UserCredentialsModel(final String _username, final String _password) {
+    public UserAuthenticationCommand(final String _username, final String _password) {
         username = _username;
         password = _password;
     }

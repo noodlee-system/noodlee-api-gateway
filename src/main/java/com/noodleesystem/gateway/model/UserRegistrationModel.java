@@ -9,21 +9,21 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="users")
-public class UserApiModel {
+public class UserRegistrationModel {
     private int id;
     private String username;
     private String password;
     private String role;
 
-    public UserApiModel() { }
+    public UserRegistrationModel() { }
 
-    public UserApiModel(final String _username, final String _password) {
+    public UserRegistrationModel(final String _username, final String _password) {
         this.username = _username;
         this.password = _password;
         this.role = "";
     }
 
-    public UserApiModel(UserCredentialsModel _userCredentials) {
+    public UserRegistrationModel(UserAuthenticationCommand _userCredentials) {
         this.username = _userCredentials.getUsername();
         this.password = _userCredentials.getPassword();
         this.role = "";
