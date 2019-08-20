@@ -1,4 +1,4 @@
-package com.noodlee.system.gateway.authentication;
+package com.noodleesystem.gateway.authentication;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -17,6 +17,11 @@ public class JwtFilter implements javax.servlet.Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
+
+        final String path = this.getRequestUrl(httpServletRequest);
+        if (path.matches("(.*)/v2/api-docs")) {
+            filterChain.doFilter(servletRequest, servletResponse);
+        }
 
         final String header = httpServletRequest.getHeader("authorization");
         final String tokenBeginningPhrase = "Bearer ";
@@ -44,4 +49,15 @@ public class JwtFilter implements javax.servlet.Filter {
 
     @Override
     public void destroy() { }
+
+    private String getRequestUrl(HttpServletRequest request) {
+        StringBuilder requestURL = new StringBuilder(request.getRequestURL().toString());
+        String queryString = request.getQueryString();
+
+        if (queryString == null) {
+            return requestURL.toString();
+        } else {
+            return requestURL.append('?').append(queryString).toString();
+        }
+    }
 }

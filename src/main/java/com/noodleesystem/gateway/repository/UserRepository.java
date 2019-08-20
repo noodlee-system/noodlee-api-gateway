@@ -11,6 +11,6 @@ import com.noodleesystem.gateway.model.UserRegistrationModel;
 @Repository
 public interface UserRepository extends JpaRepository<UserRegistrationModel, Long>{
     @Async
-    @Query("SELECT u FROM UserApiModel u WHERE u.username = :username")
+    @Query("SELECT u FROM UserRegistrationModel u WHERE u.username = :username")
     UserRegistrationModel findByUsername(@Param("username") final String username);
 }
