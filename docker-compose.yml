@@ -25,6 +25,7 @@ services:
       POSTGRES_DB: registration
     volumes:
       - gateway-service_database-volume:/var/lib/postgresql/gateway
+      - ./_database/init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - noodlee-system-network
 

@@ -17,6 +17,6 @@ FROM java:8
 
 COPY --from=builder /home/app/target/gateway-1.0.jar /usr/local/lib/gateway-service.jar
 
-EXPOSE 8081
+EXPOSE 8080
 
 ENTRYPOINT [ "java", "-jar", "/usr/local/lib/gateway-service.jar" ]
