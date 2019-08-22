@@ -16,8 +16,7 @@ import com.noodleesystem.gateway.model.UserRegistrationModel;
 public class AuthenticationController {
     @Autowired
     private UserRepository usersRepository;
-
-    @CrossOrigin(origins = "http://localhost:4200")
+    
     @PostMapping("/auth")
     public Token authenticate(@RequestBody UserAuthenticationCommand user) {
         final long currentTimeMillis = System.currentTimeMillis();
