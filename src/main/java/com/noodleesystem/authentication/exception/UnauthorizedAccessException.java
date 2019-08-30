@@ -1,4 +1,4 @@
-package com.noodleesystem.gateway.exception;
+package com.noodleesystem.authentication.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

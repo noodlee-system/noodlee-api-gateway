@@ -15,8 +15,8 @@ RUN mvn -s ./settings.xml package -DskipTests=true
 # STEP 2 - SERVE JAVA APPLICATION USING JRE
 FROM java:8
 
-COPY --from=builder /home/app/target/gateway-1.0.jar /usr/local/lib/gateway-service.jar
+COPY --from=builder /home/app/target/authentication-1.0.jar /usr/local/lib/authentication-service.jar
 
 EXPOSE 8080
 
-ENTRYPOINT [ "java", "-jar", "/usr/local/lib/gateway-service.jar" ]
+ENTRYPOINT [ "java", "-jar", "/usr/local/lib/authentication-service.jar" ]

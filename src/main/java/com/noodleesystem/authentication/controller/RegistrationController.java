@@ -1,11 +1,11 @@
-package com.noodleesystem.gateway.controller;
+package com.noodleesystem.authentication.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.noodleesystem.gateway.exception.UserExistsException;
-import com.noodleesystem.gateway.model.UserRegistrationModel;
-import com.noodleesystem.gateway.model.UserRegistrationCommand;
-import com.noodleesystem.gateway.repository.UserRepository;
+import com.noodleesystem.authentication.exception.UserExistsException;
+import com.noodleesystem.authentication.model.UserRegistrationModel;
+import com.noodleesystem.authentication.model.UserRegistrationCommand;
+import com.noodleesystem.authentication.repository.UserRepository;
 import org.springframework.amqp.AmqpException;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +45,7 @@ public class RegistrationController {
         } catch (JsonProcessingException ex) {
             throw new Exception("Problem with processing your request!");
         } catch (AmqpException ex) {
-            throw new Exception("Problem with processing your request!");
+            System.err.println("WARNING: Connection with RabbitMQ failed!");
         }
 
         final UserRegistrationModel newUserCredentials = new UserRegistrationModel(user.getUsername(), user.getPassword());

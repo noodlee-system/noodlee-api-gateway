@@ -1,4 +1,4 @@
-package com.noodleesystem.gateway.config;
+package com.noodleesystem.authentication.config;
 
 import org.springframework.amqp.core.Queue;
 import org.springframework.context.annotation.Bean;
