@@ -2,7 +2,7 @@ version: "3.5"
 
 services:
   authentication-service:
-    container_name: authentication-service_api
+    container_name: authentication-service
     build:
       context: ./
       dockerfile: Dockerfile
