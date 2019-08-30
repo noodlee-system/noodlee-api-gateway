@@ -1,4 +1,4 @@
-package com.noodleesystem.gateway.model;
+package com.noodleesystem.authentication.model;
 
 public class UserRegistrationCommand {
     private String username;

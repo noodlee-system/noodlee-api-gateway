@@ -1,4 +1,4 @@
-package com.noodleesystem.gateway;
+package com.noodleesystem.authentication;
 
 // import org.junit.Test;
 // import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ package com.noodleesystem.gateway;
 
 // @RunWith(SpringRunner.class)
 // @SpringBootTest
-// public class ApiGatewayTests {
+// public class AuthenticationServiceTests {
 
 // 	@Test
 // 	public void contextLoads() {

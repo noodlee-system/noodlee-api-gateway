@@ -1,30 +1,30 @@
 version: "3.5"
 
 services:
-  gateway-service_api:
-    container_name: gateway-service_api
+  authentication-service:
+    container_name: authentication-service_api
     build:
       context: ./
       dockerfile: Dockerfile
-    image: gateway-service
+    image: authentication-service
     ports:
-      - "8080:8080"
+      - "8081:8080"
     depends_on:
-      - gateway-service_database
+      - authentication-service_database
     networks:
       - noodlee-system-network
 
-  gateway-service_database:
-    container_name: gateway-service_database
+  authentication-service_database:
+    container_name: authentication-service_database
     image: postgres:9.6
     ports:
-      - "5432:5432"
+      - "5433:5432"
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: PdgDNLnlrr3NgshqwKJA
       POSTGRES_DB: registration
     volumes:
-      - gateway-service_database-volume:/var/lib/postgresql/gateway
+      - authentication-service_database-volume:/var/lib/postgresql/gateway
       - ./_database/init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - noodlee-system-network
@@ -35,4 +35,4 @@ networks:
     driver: bridge
     
 volumes:
-  gateway-service_database-volume:
+  authentication-service_database-volume:

@@ -1,4 +1,4 @@
-package com.noodleesystem.gateway.model;
+package com.noodleesystem.authentication.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,7 +23,7 @@ public class UserRegistrationModel {
         this.role = "";
     }
 
-    public UserRegistrationModel(UserAuthenticationCommand _userCredentials) {
+    public UserRegistrationModel(UserLoginCommand _userCredentials) {
         this.username = _userCredentials.getUsername();
         this.password = _userCredentials.getPassword();
         this.role = "";

@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.noodleesystem</groupId>
-	<artifactId>gateway</artifactId>
+	<artifactId>authentication</artifactId>
 	<version>1.0</version>
-	<name>API Gateway Microservice</name>
-	<description>Noodlee System API Gateway Microservice</description>
+	<name>Authentication Microservice</name>
+	<description>Noodlee System Authentication Microservice</description>
 	<properties>
 		<java.version>8</java.version>
 		<spring-cloud.version>Finchley.SR2</spring-cloud.version>
@@ -58,17 +58,6 @@
 			<artifactId>boon-reflekt</artifactId>
 			<version>0.6.6</version>
 		</dependency>
-		<!-- Eureka Client -->
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-		</dependency>
-		<!-- Zuul -->
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-zuul</artifactId>
-			<version>1.4.7.RELEASE</version>
-		</dependency>
 		<!-- JSON Web Token -->
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
@@ -87,17 +76,6 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>${spring-cloud.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 	<build>
 		<plugins>
 			<plugin>

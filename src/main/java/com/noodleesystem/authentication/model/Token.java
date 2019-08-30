@@ -1,10 +1,28 @@
-package com.noodleesystem.gateway.model;
+package com.noodleesystem.authentication.model;
 
 public class Token {
+    private int userId;
+    private String username;
     private String token;
     private long creationTime;
     private long expirationTime;
-    private String userRole;
+    private String role;
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public String getToken() {
         return token;
@@ -30,11 +48,11 @@ public class Token {
         this.expirationTime = expirationTime;
     }
 
-    public String getUserRole() {
-        return userRole;
+    public String getRole() {
+        return role;
     }
 
-    public void setUserRole(String userRole) {
-        this.userRole = userRole;
+    public void setRole(String role) {
+        this.role = role;
     }
 }
